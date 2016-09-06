@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>DreamCraft-CoreMod</name>
+	<name>GTNewHorizonsCoreMod</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -16,9 +16,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>.link1</name>
+			<name>.link0</name>
 			<type>2</type>
-			<location>C:/Users/Fussi/.gradle/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.2.1291/start</location>
+			<location>/home/namikon/.gradle/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.2.1291/start</location>
 		</link>
 	</linkedResources>
 </projectDescription>

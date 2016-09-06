@@ -17,37 +17,69 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.7.10-1.2.09"
+file "build.properties" withReader {
+    def prop = new Properties()
+    prop.load(it)
+    ext.config = new ConfigSlurper().parse prop
+}
+
+version = "${config.coremod.version}"
 group= "com.dreammaster" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "GTNewHorizonsCoreMod"
 
 minecraft {
-    version = "1.7.10-10.13.2.1291"
+    version = "${config.minecraft.version}-${config.forge.version}"
     runDir = "eclipse"
-	
-	replaceIn "src/main/java/com/dreammaster/lib/Refstrings.java"
-	replace "GRADLETOKEN_VERSION", project.version.split('-')[1]
+
+    replaceIn "src/main/java/com/dreammaster/lib/Refstrings.java"
+    replace "GRADLETOKEN_VERSION", project.version.split('-')[1]
+}
+
+repositories {
+    maven {
+        name 'Forge' // Applied Energistics
+        url 'http://files.minecraftforge.net/maven'
+    }
+    maven { // GalacticGreg, YAMCore,..
+        name 'UsrvDE'
+        url "http://jenkins.usrv.de:8082/nexus/content/repositories/releases/"
+    }
+    maven { // Baubles
+    	name 'UsrvDE_3rdParty'
+    	url "http://jenkins.usrv.de:8082/nexus/content/repositories/thirdparty/"
+    }
+    maven {
+        name = "chickenbones"
+        url = "http://chickenbones.net/maven/"
+    }
+    maven {
+        name = "ic2, forestry"
+        url = "http://maven.ic2.player.to/"
+    }
+    maven { // AppleCore
+        url "http://www.ryanliptak.com/maven/"
+    }
 }
 
 dependencies {
-    // you may put jars on which you depend on in ./libs
-    // or you may define them like so..
-    //compile "some.group:artifact:version:classifier"
-    //compile "some.group:artifact:version"
-      
-    // real examples
-    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-
-    // for more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
+    compile "eu.usrv:YAMCore:${config.minecraft.version}-${config.yamcore.version}:deobf"
+    compile "bloodasp.galacticgreg:GalacticGreg:${config.minecraft.version}-${config.galacticgreg.version}:deobf"
+    compile "com.azanor.baubles:Baubles:${config.minecraft.version}-${config.baubles.version}:deobf"
+    
+    compile ("appeng:appliedenergistics2:${config.ae2.version}:api") {
+        exclude module: '*'
+    }
+    
+    compile "applecore:AppleCore:${config.applecore.version}:deobf"
+    compile "codechicken:CodeChickenLib:${config.minecraft.version}-${config.codechickenlib.version}:dev"
+    compile "codechicken:CodeChickenCore:${config.minecraft.version}-${config.codechickencore.version}:dev"
+    compile "codechicken:NotEnoughItems:${config.minecraft.version}-${config.nei.version}:dev"
+    compile "net.industrial-craft:industrialcraft-2:${config.ic2.version}:dev"
 }
 
 processResources
 {
-	def cleanVersion = project.version.split('-')[1]
+    def cleanVersion = project.version.split('-')[1]
     // this will ensure that this task is redone when the versions change.
     inputs.property "version", cleanVersion
     inputs.property "mcversion", project.minecraft.version
@@ -55,9 +87,7 @@ processResources
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-                
-				
-		
+
         // replace version and mcversion
         expand 'version':cleanVersion, 'mcversion':project.minecraft.version
     }

@@ -1,4 +1,5 @@
 .gradle/
+.project
 eclipse/
 .settings/
 .classpath
