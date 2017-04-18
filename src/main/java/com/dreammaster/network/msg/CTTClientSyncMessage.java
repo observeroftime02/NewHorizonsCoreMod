@@ -1,6 +1,7 @@
 package com.dreammaster.network.msg;
 
 
+import com.dreammaster.auxiliary.StringHelper;
 import com.dreammaster.main.MainRegistry;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
@@ -48,28 +49,13 @@ public class CTTClientSyncMessage implements IMessage
   public static List<CTTClientSyncMessage> getPreparedNetworkMessages( String pPayload )
   {
     List<CTTClientSyncMessage> tMessages = new ArrayList<>();
-    List<String> tPayloads = splitByLength( pPayload, 4096 );
+    List<String> tPayloads = StringHelper.splitByLength( pPayload, 4096 );
 
     int tTotalFrames = tPayloads.size();
     for( int tFrame = 0; tFrame < tTotalFrames; tFrame++ )
       tMessages.add( new CTTClientSyncMessage( tPayloads.get( tFrame ), tFrame, tTotalFrames ) );
 
     return tMessages;
-  }
-
-  private static List<String> splitByLength( String pInput, int pChunkSize )
-  {
-    List<String> tReturnList = new ArrayList<>();
-
-    for( int i = 0; i < pInput.length(); i = i + pChunkSize )
-    {
-      if( pInput.length() - i < pChunkSize )
-        tReturnList.add( pInput.substring( i ) );
-      else
-        tReturnList.add( pInput.substring( i, i + pChunkSize ) );
-    }
-
-    return tReturnList;
   }
 
   public static class CTTClientSyncMessageHandler extends AbstractClientMessageHandler<CTTClientSyncMessage>

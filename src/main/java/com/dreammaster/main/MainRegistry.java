@@ -23,6 +23,7 @@ import com.dreammaster.modfixes.avaritia.SkullFireSwordDropFix;
 import com.dreammaster.modfixes.oilgen.OilGeneratorFix;
 import com.dreammaster.modhazardousitems.HazardousItemsHandler;
 import com.dreammaster.network.CoreModDispatcher;
+import com.dreammaster.packsecurity.PackSecurityHandler;
 import com.dreammaster.railcraftStones.NH_GeodePopulator;
 import com.dreammaster.railcraftStones.NH_QuarryPopulator;
 
@@ -83,6 +84,7 @@ public class MainRegistry
     public static Random Rnd = null;
     public static LogHelper Logger = new LogHelper(Refstrings.MODID);
     private static SpaceDimRegisterer SpaceDimReg = null;
+    public static PackSecurityHandler PSE = null;
 
     public static void AddLoginError(String pMessage)
     {
@@ -107,6 +109,9 @@ public class MainRegistry
             Logger.debug("Module_AdminErrorLogs is enabled");
             Module_AdminErrorLogs = new IngameErrorLog();
         }
+
+        PSE = new PackSecurityHandler();
+        PSE.Init();
 
         // ------------------------------------------------------------
         Logger.debug("PRELOAD Init NetworkChannel");
