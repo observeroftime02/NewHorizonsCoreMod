@@ -7,12 +7,12 @@ import java.util.List;
 
 public class ClientAuthorizedState
 {
-  public int ClientSecret;
+  public String ClientSecret;
   public boolean IsLegitClient;
   public List<PackSecurityModListEntry> FilesInModsFolder;
   public List<PackLoadedModInfo> LoadedMods;
 
-  public ClientAuthorizedState( int pClientSecret )
+  public ClientAuthorizedState( String pClientSecret )
   {
     ClientSecret = pClientSecret;
     IsLegitClient = false;

@@ -13,6 +13,7 @@ public class PackSecurityModListEntry
 
   public PackSecurityModListEntry( File pFilePath )
   {
+    ModFileName = pFilePath.getName();
     try
     {
       FileHash = SHA1Digest.calcSHA1( pFilePath );

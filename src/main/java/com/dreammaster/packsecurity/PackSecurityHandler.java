@@ -1,6 +1,7 @@
 package com.dreammaster.packsecurity;
 
 
+import com.dreammaster.auxiliary.SHA1Digest;
 import com.dreammaster.auxiliary.TripleDES;
 import com.dreammaster.main.MainRegistry;
 import com.dreammaster.network.msg.PackSecurityHandShake;
@@ -25,11 +26,19 @@ public class PackSecurityHandler
   private List<PackSecurityModListEntry> _mModfolderFiles;
   private static final Object modListLock = new Object();
   private static final Object pendingConnectionsLock = new Object();
+  public static String SharedSecret = "";
 
   public PackSecurityHandler()
   {
     _mModfolderFiles = new ArrayList<>();
     _mPendingConnectionSecrets = new HashMap<>();
+    try
+    {
+      SharedSecret = SHA1Digest.calcSHA1( new File( PackSecurityHandShake.class.getProtectionDomain().getCodeSource().getLocation().getPath() ) );
+    }
+    catch( Exception e )
+    {
+    }
   }
 
   public List<PackSecurityModListEntry> getModFilePayload()
@@ -76,7 +85,7 @@ public class PackSecurityHandler
     if( pEvent.player instanceof EntityPlayerMP )
     {
       String tConnectionUUID = pEvent.player.getUniqueID().toString();
-      int tSecret = MainRegistry.Rnd.nextInt( Integer.MAX_VALUE );
+      String tSecret = UUID.randomUUID().toString();
       synchronized( pendingConnectionsLock )
       {
         _mPendingConnectionSecrets.put( tConnectionUUID, new ClientAuthorizedState( tSecret ) );
@@ -99,7 +108,7 @@ public class PackSecurityHandler
 
     try
     {
-      TripleDES tDes = new TripleDES( String.format( "%d", tAuthState.ClientSecret ) );
+      TripleDES tDes = new TripleDES( tAuthState.ClientSecret );
 
       List<PackSecurityModListEntry> tModFiles = new ArrayList<>();
       List<PackLoadedModInfo> tModList = new ArrayList<>();
@@ -131,6 +140,10 @@ public class PackSecurityHandler
       tAuthState.FilesInModsFolder = tModFiles;
       tAuthState.LoadedMods = tModList;
 
+      MainRegistry.Logger.info( String.format( "Client [%s] is connecting with %d files in /mods/ and %d loaded Mod-Objects in total", pUUID.toString(), tAuthState.FilesInModsFolder, tAuthState.LoadedMods ) );
+      
+      // TODO: Add checks here to verify FileHashes and check for illegal loaded mods
+
       synchronized( pendingConnectionsLock )
       {
         _mPendingConnectionSecrets.put( pUUID.toString(), tAuthState );
@@ -138,7 +151,7 @@ public class PackSecurityHandler
     }
     catch( Exception e )
     {
-
+      MainRegistry.Logger.error( String.format( "Error while reading encrypted client response. Client seems to be tampered! UserID: %s", pUUID.toString() ) );
     }
   }
 }

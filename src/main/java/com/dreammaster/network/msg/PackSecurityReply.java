@@ -37,13 +37,13 @@ public class PackSecurityReply implements IMessage
   {
   }
 
-  public PackSecurityReply( int pServerSecret )
+  public PackSecurityReply( String pServerSecret )
   {
     mPayload = new NBTTagCompound();
 
     try
     {
-      TripleDES tDes = new TripleDES( String.format( "%d", pServerSecret ) );
+      TripleDES tDes = new TripleDES( pServerSecret );
 
       NBTTagList tFilesTagList = new NBTTagList();
       NBTTagList tModTagList = new NBTTagList();
