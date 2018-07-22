@@ -28,6 +28,9 @@ import com.dreammaster.network.CoreModDispatcher;
 import com.dreammaster.oredict.OreDictHandler;
 import com.dreammaster.railcraftStones.NH_GeodePopulator;
 import com.dreammaster.railcraftStones.NH_QuarryPopulator;
+import com.dreammaster.witcheryhandler.GTNH_Witchery_Plugin;
+
+import alkalus.main.api.RecipeManager;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -75,6 +78,7 @@ public class MainRegistry
     @Mod.Instance(Refstrings.MODID)
     public static MainRegistry instance;
 
+    public static GTNH_Witchery_Plugin GTNH_Witchery_Plugin = new GTNH_Witchery_Plugin();
     public static ModItemManager ItemManager;
     public static CreativeTabsManager TabManager;
     public static ModFluidManager FluidManager;
@@ -291,6 +295,7 @@ public class MainRegistry
             }
 
         }
+        RecipeManager.PluginManager.loadPluginForInit(GTNH_Witchery_Plugin);
     }
 
     public static Block _mBlockBabyChest = new BlockBabyChest();
@@ -366,6 +371,8 @@ public class MainRegistry
         // Don't call enableModFixes() yourself
         // Don't register fixes after enableModFixes() has been executed
         ModFixesMaster.enableModFixes();
+        
+        RecipeManager.PluginManager.loadPluginForPostInit(GTNH_Witchery_Plugin);
     }
 
     /**
