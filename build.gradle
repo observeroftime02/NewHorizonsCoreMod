@@ -140,7 +140,7 @@ task getGalacticGreg(type: Download, dependsOn: "getForestryAPI") {
     mustRunAfter "deobfBinJar"
     mustRunAfter "repackMinecraft"
 }
-
+/*
 task getGregTech(type: Download, dependsOn: "getGalacticGreg") {
     onlyIf {
         !file("libs/gregtech-${config.gregtech.version}-dev.jar").exists()
@@ -149,9 +149,9 @@ task getGregTech(type: Download, dependsOn: "getGalacticGreg") {
     dest file("libs/gregtech-${config.gregtech.version}-dev.jar")
     mustRunAfter "deobfBinJar"
     mustRunAfter "repackMinecraft"
-}
+}*/
 
-task getHEE(type: Download, dependsOn: "getGregTech") {
+task getHEE(type: Download, dependsOn: "getGalacticGreg") {
     onlyIf {
         !file("libs/HardcoreEnderExpansion  MC-1.7.10  v1.8.6.jar").exists()
     }
