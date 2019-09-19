@@ -180,7 +180,7 @@ public class GT_MetaTileEntity_WorldAccelerator extends GT_MetaTileEntity_Tiered
   {
     // Include range setting into power calculation
     float multiplier = 100.0F / (float)mTier * (float)pRangeTier / 100.0F;
-    long demand = V[pSpeedTier] * ( pIsAcceleratingTEs ? 6 : 3 );
+    long demand = V[pSpeedTier] * ( pIsAcceleratingTEs ? 2 : 1 );
 
     float tDemand = demand * multiplier;
 
