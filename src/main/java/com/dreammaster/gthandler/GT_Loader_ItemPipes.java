@@ -1,5 +1,6 @@
 package com.dreammaster.gthandler;
 
+import gregtech.api.enums.GTNH_ExtraMaterials;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.metatileentity.implementations.GT_MetaPipeEntity_Item;
@@ -62,7 +63,7 @@ public final class GT_Loader_ItemPipes {
         generateItemPipes(Materials.BlackPlutonium, Materials.BlackPlutonium.mName, 5660, 32);
         generateItemPipes(Materials.Bedrockium, Materials.Bedrockium.mName, 5670, 64);
         generateItemPipes(Materials.Quantium, Materials.Quantium.mName, 5730, 128);
-        generateItemPipes(Materials.Weebium, Materials.Weebium.mName, 18120, 64);
+        generateItemPipes(GTNH_ExtraMaterials.Weebium, GTNH_ExtraMaterials.Weebium.mName, 18120, 64);
     }
 
     private static void generateItemPipes(Materials aMaterial, String name, int startID, int baseInvSlots){
