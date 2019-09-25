@@ -12,10 +12,11 @@ public class LoginHandler
     @SubscribeEvent
     public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event)
     {
-        event.player.addChatMessage(new ChatComponentText(EnumChatFormatting.GOLD + "=================================================="));
-        event.player.addChatMessage(new ChatComponentText(EnumChatFormatting.BOLD + "Welcome to Gregtech:New Horizons " + EnumChatFormatting.GREEN + CoreModConfig.ModPackVersion) );
-        event.player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "CAUTION! THIS IS NOT A PUBLIC RELEASE BUILD" ));
-        event.player.addChatMessage(new ChatComponentText(EnumChatFormatting.BLUE + "THIS IS MAMITOMOES EXPERIMENTAL BULD" ));
-        event.player.addChatMessage(new ChatComponentText(EnumChatFormatting.GOLD + "=================================================="));
+        event.player.addChatMessage(new ChatComponentText(EnumChatFormatting.GOLD +           "=================================================="    ));
+        event.player.addChatMessage(new ChatComponentText(EnumChatFormatting.BOLD +           "    Welcome to Gregtech:New Horizons Weebified"        ));
+        event.player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED +            "   CAUTION! THIS IS NOT A PUBLIC RELEASE BUILD"        ));
+        event.player.addChatMessage(new ChatComponentText(EnumChatFormatting.BLUE +           "      THIS IS MAMITOMOES EXPERIMENTAL BUILD"           ));
+        event.player.addChatMessage(new ChatComponentText( EnumChatFormatting.LIGHT_PURPLE+   "       Things will break. Please make backups!"        ));
+        event.player.addChatMessage(new ChatComponentText(EnumChatFormatting.GOLD +           "=================================================="    ));
     }
 }

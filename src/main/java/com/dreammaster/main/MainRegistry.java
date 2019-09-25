@@ -271,10 +271,12 @@ public class MainRegistry
         {
             FMLCommonHandler.instance().bus().register(new LoginHandler());
         }
-        Logger.warn( "==================================================" );
+        Logger.warn( "==========================================================" );
         Logger.warn( "Welcome to Gregtech:New Horizons " + CoreModConfig.ModPackVersion );
-        Logger.warn( "Please bring comments to " + "https://discord.gg/EXshrPV" );
-        Logger.warn( "==================================================" );
+        Logger.warn( "Please bring comments to " + "observeroftime@shizuki.ca" );
+        Logger.warn( "or to observeroftime02 on GitHub. This is an experimental");
+        Logger.warn( "build and comes with no warranties. Make backups!");
+        Logger.warn( "===========================================================" );
     }
 
     private static boolean RegisterNonEnumItems()
