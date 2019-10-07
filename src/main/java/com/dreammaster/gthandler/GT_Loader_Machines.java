@@ -4312,8 +4312,19 @@ public class GT_Loader_Machines
 		//CustomItemList.Battery_TurboCharger_4by4_UIV.set(new GT_MetaTileEntity_TurboCharger(
 		//		12051, "batteryturbocharger.16.tier.11", "Insanely Ultimate Turbo Charger",11,"64A in /16A out", 4).getStackForm(1L));
 
-		//CustomItemList.Battery_TurboCharger_4by4_UMV.set(new GT_MetaTileEntity_TurboCharger(
-		//		12052, "batteryturbocharger.16.tier.12", "Mega Ultimate Turbo Charger",12,"64A in /16A out", 4).getStackForm(1L));
+
+		CustomItemList.Battery_TurboCharger_4by4_UMV.set(new GT_MetaTileEntity_TurboCharger(
+				12052, "batteryturbocharger.16.tier.12", "Mega Ultimate Turbo Charger",12,"64A in /16A out", 4).getStackForm(1L));
+
+		GT_ModHandler.addCraftingRecipe(CustomItemList.Battery_TurboCharger_4by4_UMV.get(1L),
+				bitsd,
+				new Object[]{"BTB", "CMC", "BXB",
+						'T', CustomItemList.WetTransformer_UMV_UIV,
+						'M', ItemList.Battery_Charger_4by4_MAX,
+						'B', ItemList.ZPM3,
+						'C', OrePrefixes.wireGt16.get(Materials.Quantium),
+						'X', OrePrefixes.circuit.get(Materials.Quantum)});
+
 
 		//CustomItemList.Battery_TurboCharger_4by4_UXV.set(new GT_MetaTileEntity_TurboCharger(
 		//		12053, "batteryturbocharger.16.tier.13", "Extended Mega Ultimate Turbo Charger",13,"64A in /16A out", 4).getStackForm(1L));
