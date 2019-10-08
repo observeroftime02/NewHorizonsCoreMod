@@ -39,6 +39,8 @@ public class GT_Loader_Wires
         makeWires(Materials.DraconiumAwakened, 11410, bEC ? 4L : 16L, bEC ? 16L : 32L, 1L, GT_Values.V[14], false, false);
         makeWires(Materials.Infinity, 11430, 1L, 1L, 16L, GT_Values.V[15], false, true);
         makeWires(GTNH_ExtraMaterials.Weebium, 18100, 1L, 2L, 16L, GT_Values.V[8], true, false);
+        makeWires(GTNH_ExtraMaterials.PMagium, 18140, 8L, 32L, 32L, GT_Values.V[12], true, false);
+
 
         /** ID SPACE RESERVED: to 11800, FOR WIRES
         makeWires(Materials.???, 1920, 4L, 8L, 8L, gregtech.api.enums.GT_Values.V[8], true, false);
