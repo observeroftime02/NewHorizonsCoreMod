@@ -10,7 +10,8 @@ buildscript {
         //    name = "forge"
         //    url = "http://files.minecraftforge.net/maven"
         //}
-        maven {
+		
+	   maven {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
