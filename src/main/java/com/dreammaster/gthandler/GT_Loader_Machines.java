@@ -85,13 +85,37 @@ public class GT_Loader_Machines
 				11233, "hull.tier.13", "UXV Machine Hull",13,
 				GT_Loader_MetaTileEntities.imagination).getStackForm(1L));
 
+		GT_ModHandler.addCraftingRecipe(CustomItemList.Hull_UXV.get(1L),
+				bitsd,
+				new Object[]{"PHP", "WMW",
+						'M', CustomItemList.Casing_UXV,
+						'W', OrePrefixes.wireGt12.get(Materials.BlackPlutonium),
+						'H', OrePrefixes.plate.get(Materials.DraconiumAwakened),
+						'P', OrePrefixes.plateDouble.get(Materials.Polybenzimidazole)});
+
 		CustomItemList.Hull_OPV.set(new GT_MetaTileEntity_BasicHull(
 				11234, "hull.tier.14", "OPV Machine Hull",14,
 				GT_Loader_MetaTileEntities.imagination).getStackForm(1L));
 
+		GT_ModHandler.addCraftingRecipe(CustomItemList.Hull_OPV.get(1L),
+				bitsd,
+				new Object[]{"PHP", "WMW",
+						'M', CustomItemList.Casing_OPV,
+						'W', OrePrefixes.wireGt12.get(Materials.DraconiumAwakened),
+						'H', OrePrefixes.plate.get(Materials.Infinity),
+						'P', OrePrefixes.plateDouble.get(Materials.Polybenzimidazole)});
+
 		CustomItemList.Hull_MAXV.set(new GT_MetaTileEntity_BasicHull(
 				11235, "hull.tier.15", "MAX Machine Hull",15,
 				GT_Loader_MetaTileEntities.imagination).getStackForm(1L));
+
+		GT_ModHandler.addCraftingRecipe(CustomItemList.Hull_MAXV.get(1L),
+				bitsd,
+				new Object[]{"PHP", "WMW",
+						'M', CustomItemList.Casing_MAXV,
+						'W', OrePrefixes.wireGt12.get(Materials.Infinity),
+						'H', OrePrefixes.plate.get(GTNH_ExtraMaterials.Weebium),
+						'P', OrePrefixes.plateDouble.get(Materials.Polybenzimidazole)});
 
 		//TODO:recipes
 
@@ -3575,6 +3599,30 @@ public class GT_Loader_Machines
 						'B', OrePrefixes.wireGt04.get(Materials.NetherStar),
 						'K', ItemList.Circuit_Chip_QPIC});
 
+		GT_ModHandler.addCraftingRecipe(CustomItemList.Transformer_UXV_UMV.get(1L),
+				bitsd,
+				new Object[] {"KBB", "CM ", "KBB",
+						'M', CustomItemList.Hull_UMV,
+						'C', OrePrefixes.wireGt01.get(Materials.BlackPlutonium),
+						'B', OrePrefixes.wireGt04.get(Materials.Quantium),
+						'K', CustomItemList.NanoCircuit});
+
+		GT_ModHandler.addCraftingRecipe(CustomItemList.Transformer_OPV_UXV.get(1L),
+				bitsd,
+				new Object[] {"KBB", "CM ", "KBB",
+						'M', CustomItemList.Hull_UXV,
+						'C', OrePrefixes.wireGt01.get(Materials.DraconiumAwakened),
+						'B', OrePrefixes.wireGt04.get(Materials.BlackPlutonium),
+						'K', CustomItemList.PikoCircuit});
+
+		GT_ModHandler.addCraftingRecipe(CustomItemList.Transformer_MAXV_OPV.get(1L),
+				bitsd,
+				new Object[] {"KBB", "CM ", "KBB",
+						'M', CustomItemList.Hull_OPV,
+						'C', OrePrefixes.wireGt01.get(Materials.Infinity),
+						'B', OrePrefixes.wireGt04.get(Materials.DraconiumAwakened),
+						'K', CustomItemList.QuantumCircuit});
+
 
 		//TODO:recipes
 
@@ -3911,6 +3959,24 @@ public class GT_Loader_Machines
 							OrePrefixes.wireGt04.get(Materials.NetherStar), Character.valueOf('K'),
 							ItemList.Casing_Fusion_Coil});
 
+			GT_ModHandler.addCraftingRecipe(CustomItemList.Transformer_HA_UXV_UMV.get(1L), bitsd,
+					new Object[] { "KBB", "CMK", "KBB", Character.valueOf('M'), CustomItemList.Transformer_UXV_UMV, Character.valueOf('C'),
+							OrePrefixes.wireGt01.get(Materials.BlackPlutonium), Character.valueOf('B'),
+							OrePrefixes.wireGt04.get(Materials.Quantium), Character.valueOf('K'),
+							ItemList.Casing_Coil_Infinity});
+
+			GT_ModHandler.addCraftingRecipe(CustomItemList.Transformer_HA_OPV_UXV.get(1L), bitsd,
+					new Object[] { "KBB", "CMK", "KBB", Character.valueOf('M'), CustomItemList.Transformer_OPV_UXV, Character.valueOf('C'),
+							OrePrefixes.wireGt01.get(Materials.DraconiumAwakened), Character.valueOf('B'),
+							OrePrefixes.wireGt04.get(Materials.BlackPlutonium), Character.valueOf('K'),
+							ItemList.Casing_Coil_Infinity});
+
+			GT_ModHandler.addCraftingRecipe(CustomItemList.Transformer_HA_MAXV_OPV.get(1L), bitsd,
+					new Object[] { "KBB", "CMK", "KBB", Character.valueOf('M'), CustomItemList.Transformer_MAXV_OPV, Character.valueOf('C'),
+							OrePrefixes.wireGt01.get(Materials.Infinity), Character.valueOf('B'),
+							OrePrefixes.wireGt04.get(Materials.DraconiumAwakened), Character.valueOf('K'),
+							ItemList.Casing_Coil_Infinity});
+
 			GT_ModHandler.addCraftingRecipe(CustomItemList.WetTransformer_LV_ULV.get(1L),
 					bitsd,
 					new Object[]{"XOC", "STA", "POC",
@@ -4174,6 +4240,39 @@ public class GT_Loader_Machines
 							'O', ItemList.Reactor_Coolant_He_6,
 							'P', ItemList.Electric_Pump_IV,
 							'T', CustomItemList.Transformer_UMV_UIV});
+
+			GT_ModHandler.addCraftingRecipe(CustomItemList.WetTransformer_UXV_UMV.get(1L),
+					bitsd,
+					new Object[]{"XOC", "STA", "POC",
+							'A', OrePrefixes.springSmall.get(Materials.BlackPlutonium),
+							'C', OrePrefixes.wireGt16.get(Materials.Quantium),
+							'S', OrePrefixes.spring.get(Materials.DraconiumAwakened),
+							'X', OrePrefixes.wireGt08.get(Materials.BlackPlutonium),
+							'O', ItemList.Reactor_Coolant_Sp_2,
+							'P', ItemList.Electric_Pump_LuV,
+							'T', CustomItemList.Transformer_UXV_UMV});
+
+			GT_ModHandler.addCraftingRecipe(CustomItemList.WetTransformer_OPV_UXV.get(1L),
+					bitsd,
+					new Object[]{"XOC", "STA", "POC",
+							'A', OrePrefixes.springSmall.get(Materials.Infinity),
+							'C', OrePrefixes.wireGt16.get(Materials.BlackPlutonium),
+							'S', OrePrefixes.spring.get(Materials.BlackPlutonium),
+							'X', OrePrefixes.wireGt08.get(Materials.DraconiumAwakened),
+							'O', ItemList.Reactor_Coolant_Sp_3,
+							'P', ItemList.Electric_Pump_ZPM,
+							'T', CustomItemList.Transformer_OPV_UXV});
+
+			GT_ModHandler.addCraftingRecipe(CustomItemList.WetTransformer_MAXV_OPV.get(1L),
+					bitsd,
+					new Object[]{"XOC", "STA", "POC",
+							'A', OrePrefixes.springSmall.get(Materials.Infinity),
+							'C', OrePrefixes.wireGt16.get(Materials.DraconiumAwakened),
+							'S', OrePrefixes.spring.get(GTNH_ExtraMaterials.Weebium),
+							'X', OrePrefixes.wireGt08.get(Materials.Infinity),
+							'O', ItemList.Reactor_Coolant_Sp_6,
+							'P', ItemList.Electric_Pump_UHV,
+							'T', CustomItemList.Transformer_MAXV_OPV});
 		}
 
 		// ===================================================================================================

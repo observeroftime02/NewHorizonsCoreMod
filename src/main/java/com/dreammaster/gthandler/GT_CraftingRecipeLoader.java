@@ -3,13 +3,7 @@ package com.dreammaster.gthandler;
 import static gregtech.api.util.GT_ModHandler.RecipeBits.DELETE_ALL_OTHER_RECIPES;
 
 import cpw.mods.fml.common.Loader;
-import gregtech.api.enums.Dyes;
-import gregtech.api.enums.GT_Values;
-import gregtech.api.enums.ItemList;
-import gregtech.api.enums.Materials;
-import gregtech.api.enums.OreDictNames;
-import gregtech.api.enums.OrePrefixes;
-import gregtech.api.enums.ToolDictNames;
+import gregtech.api.enums.*;
 import gregtech.api.util.GT_Log;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
@@ -53,6 +47,22 @@ public class GT_CraftingRecipeLoader extends gregtech.loaders.postload.GT_Crafti
                 tBitMask,
                 new Object[]{"PPP", "PwP", "PPP",
                         'P', OrePrefixes.plate.get(Materials.Draconium)});
+
+        GT_ModHandler.addCraftingRecipe(CustomItemList.Casing_UXV.get(1L),
+                tBitMask,
+                new Object[]{"PPP", "PwP", "PPP",
+                        'P', OrePrefixes.plate.get(Materials.DraconiumAwakened)});
+
+        GT_ModHandler.addCraftingRecipe(CustomItemList.Casing_OPV.get(1L),
+                tBitMask,
+                new Object[]{"PPP", "PwP", "PPP",
+                        'P', OrePrefixes.plate.get(Materials.Infinity)});
+
+        GT_ModHandler.addCraftingRecipe(CustomItemList.Casing_MAXV.get(1L),
+                tBitMask,
+                new Object[]{"PPP", "PwP", "PPP",
+                        'P', OrePrefixes.plate.get(GTNH_ExtraMaterials.Weebium)});
+
         //TODO : next tiers?
 
         //Mine and Blade Battlegear remove recipes NBT
