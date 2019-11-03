@@ -1,5 +1,6 @@
 package com.dreammaster.bartworksHandler;
 
+import bloodasp.galacticgreg.GalacticGreg;
 import com.dreammaster.fluids.FluidList;
 import com.github.bartimaeusnek.bartworks.API.BioObjectAdder;
 import com.github.bartimaeusnek.bartworks.API.BioRecipeAdder;
@@ -34,6 +35,8 @@ public class BacteriaRegistry {
         runLateBioOBJs();
         runBWRecipes();
         runGTRecipes();
+        new BW_Recipe_Loader().run();
+        GalacticGreg.ADDITIONALVEINREGISTER.add(new BW_New_Ores_Loader());
         CultureSet.clear(); //deletes map, not used anymore
     }
 
