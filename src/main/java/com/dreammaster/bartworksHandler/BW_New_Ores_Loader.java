@@ -24,12 +24,14 @@ public class BW_New_Ores_Loader implements Runnable {
         new BW_Worldgen_Ore_SmallOre_Space("small.Ruthenium",true,15,45,8, LeachResidue.getmID(),LeachResidue);
         new BW_Worldgen_Ore_SmallOre_Space("small.Palladium",true,40,60,8, PDMetallicPowder.getmID(),PDMetallicPowder);
         new BW_Worldgen_Ore_SmallOre_Space("small.Arsenopyrite",true,10,70,8, Arsenopyrite.getmID(),Arsenopyrite);
+
     }
     /**
      * Ore Veins go in here
      */
     private void loadVeins(){
         new BW_Worldgen_Ore_Layer_Space("mix.mercury",true,20,60,25,3,16, Cinnabar,Terlinguaite,Atheneite,Temagamite);
+        new BW_Worldgen_Ore_Layer_Space("mix.temporarytest", true, 10, 80, 80, 10, 24, PTMetallicPowder, IrOsLeachResidue, IrLeachResidue, PDMetallicPowder);
     }
 
 }
